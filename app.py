@@ -33,7 +33,7 @@ if uploaded_file is not None:
             # Display prediction with confidence
             confidence = prediction[0][0] if isinstance(prediction, np.ndarray) else prediction
             st.metric("Prediction Result", 
-                     "Fracture detected" if confidence > 0.5 else "No fracture detected",
+                     "no Fracture detected" if confidence > 0.5 else "fracture detected",
                      f"{confidence:.2%} confidence")
             
             # Optional: show raw prediction value

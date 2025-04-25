@@ -3,9 +3,9 @@ import numpy as np
 from PIL import Image
 
 def load_model():
-    # Ensure you're loading the TensorFlow Lite model (.tflite)
-    model_path = 'model/fracture_model.tflite'  # Ensure correct path to your .tflite model
-
+    # Update the path to match your actual file name
+    model_path = 'model/bone_fracture_model.tflite'  # Changed from fracture_model.tflite
+    
     # Load the TensorFlow Lite model
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()

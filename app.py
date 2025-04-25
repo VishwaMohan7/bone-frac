@@ -1,17 +1,31 @@
 import streamlit as st
 from PIL import Image
+import numpy as np
+import tensorflow as tf
 from helper import load_model, predict_fracture
 
-st.title("🦴 Bone Fracture Detection from X-ray")
-st.write("Upload an X-ray image and let the model predict if it shows a fracture.")
+# Load the TensorFlow Lite model
+model = load_model()
 
-uploaded_file = st.file_uploader("Choose an X-ray image", type=["jpg", "jpeg", "png"])
+# Streamlit interface
+st.title("Bone Fracture Detection")
 
-if uploaded_file:
+# Upload an image
+uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"])
+
+if uploaded_file is not None:
+    # Open the image
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
     
+    # Display the uploaded image
+    st.image(image, caption='Uploaded Image', use_column_width=True)
+
+    # Predict the fracture status
     with st.spinner("Analyzing..."):
-        model = load_model()
         prediction = predict_fracture(image, model)
-        st.success(f"Prediction: {prediction}")
+        
+        # Check prediction output and display the result
+        if prediction > 0.5:  # Assuming 0.5 is the threshold for fracture
+            st.success("Prediction: Fracture detected")
+        else:
+            st.success("Prediction: No fracture detected")

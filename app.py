@@ -54,7 +54,7 @@ if uploaded_file is not None:
         with col1:
             st.markdown("#### Uploaded Image:")
             image = Image.open(uploaded_file)
-            st.image(image, caption="Uploaded X-ray Image", use_column_width=True)
+            st.image(image, caption="Uploaded X-ray Image", use_container_width=True)
 
         # Predict the fracture status
         with col2:

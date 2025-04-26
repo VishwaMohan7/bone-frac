@@ -79,7 +79,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style="text-align: center; font-size: 14px; color: #aaa;">
-        Made with ❤️ by [VishwaMohan7](https://github.com/VishwaMohan7)
+        Made by [VishwaMohan7](https://github.com/VishwaMohan7)
     </div>
     """,
     unsafe_allow_html=True,

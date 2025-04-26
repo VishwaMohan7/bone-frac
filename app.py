@@ -4,14 +4,14 @@ import numpy as np
 import tensorflow as tf
 from helper import load_model, predict_fracture
 
-# Streamlit interface
+# Set page configuration
 st.set_page_config(
     page_title="Bone Fracture Detection",
     page_icon="💀",
     layout="wide",
 )
 
-# Header Section
+# Header Section with Styling
 st.markdown(
     """
     <style>
@@ -33,15 +33,15 @@ st.markdown(
 st.markdown('<div class="header">Bone Fracture Detection System</div>', unsafe_allow_html=True)
 st.markdown('<div class="subheader">Upload an X-ray image, and let the AI detect fractures with precision.</div>', unsafe_allow_html=True)
 
-# Load the TensorFlow Lite model
+# Sidebar for Model Loading
 st.sidebar.title("⚙️ Settings")
 try:
-    with st.sidebar.spinner("Loading Model..."):
+    with st.spinner("Loading Model..."):  # Corrected spinner usage
         model = load_model()
     st.sidebar.success("Model Loaded Successfully")
 except Exception as e:
     st.sidebar.error(f"Model Loading Failed: {str(e)}")
-    st.stop()  # This will stop the app if the model fails to load
+    st.stop()
 
 # Upload Section
 st.markdown("### 📤 Upload an X-ray Image")
